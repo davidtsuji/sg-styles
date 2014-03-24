@@ -6,4 +6,8 @@ build:
 clean:
 	@rm -rf bower_components node_modules dist .tmp
 
-.PHONY: build clean
+release:
+	@make clean
+	@make build
+
+.PHONY: build clean release

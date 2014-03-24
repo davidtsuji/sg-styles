@@ -3,6 +3,10 @@
 	"version": "0.0.0",
 	"description": "Style Utilities",
 	"main": "src/index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/davidtsuji/sg-styles"
+	},
 	"scripts": {
 		"test": "mocha"
 	},
