@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Style Utilities</title>
+  <link rel="stylesheet" href="../.tmp/styles.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+<body>
+
+  <div class="wrapper">
+    
+    <header>
+      
+      <nav class="left"></nav>
+      <nav class="right"></nav>
+
+    </header>
+
+    <section role="main">
+      
+      <div class="container">
+
+        <div class="page-header">
+          <h1>A Colour Palette <small></small></h1>
+        </div>
+
+        <ul class="colors">
+          <%
+            colors.forEach(function(_key){
+            	shades.forEach(function(_shade){
+            		var color = _key + (_shade ? '-' + _shade : '');
+            		%>
+	                <li class="<%= color %> <%= color.replace("sg-color-", "sg-color-background-") %>">
+	                  <div>
+	                    <%= color %>
+	                    <aside><%= colors[color] %></aside>
+	                  </div>
+	                </li>
+            		<%
+            	});
+            });
+          %>
+        </ul>
+
+      </div>
+
+    </section>
+
+  </div>
+
+	<script>
+
+		var rgbToHex = function(_value) {
+			var hexDigits = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'],
+			 rgb = _value.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/),
+			 hex = "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+
+			function hex(x) {
+			  return isNaN(x) ? "00" : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
+			 }
+
+			return hex;
+		}
+
+		$(function(){
+			$('ul.colors > li').each(function(_i, _li){
+				var $li = $(_li),
+					rgb = $li.css('background-color'),
+					hex = rgbToHex(rgb);
+
+				$li.find('>div>aside').text(hex);
+			});
+		});
+	</script> 
+
+</body>
+</html>

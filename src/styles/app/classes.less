@@ -1,0 +1,45 @@
+ul.colors {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: table;
+  
+  .centerX();
+
+  > li {
+    margin-top: 1px;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    width: 16.666666667%;
+    height: 80px;
+    font-size: 80%;
+
+    &:nth-child(7n-6) {
+      margin-top: 20px;
+      width: 100%;
+      &:after {
+        content: " ";
+        display: table;
+      }
+    }
+
+    > div {
+      color: @color-charcol;
+      background-color: fade(white, 70%);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      
+      > aside {
+        color: @color-charcol-lighter;
+        display: block;
+        font-size: 90%;
+
+      }
+
+    }
+
+  }
+
+}
